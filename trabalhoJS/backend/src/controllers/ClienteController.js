@@ -54,7 +54,7 @@ module.exports = {
             if (!cliente) {
                 return res.status(404).json({ message: 'Cliente não encontrado' });
             }
-            
+
             cliente.id = id;
             cliente.cpf = cpf;
             cliente.nome = nome;
@@ -77,7 +77,7 @@ module.exports = {
                     from: "vendas",
                     localField: "id",
                     foreignField: "idCliente",
-                    as: "venda",
+                    as: "VendasCliente",
                 },
 
             }
