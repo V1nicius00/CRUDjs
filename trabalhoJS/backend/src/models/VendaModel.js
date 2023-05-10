@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const VendaModelSchema = new mongoose.Schema({
-    idCliente: {type: Number, ref: 'Cliente'},
+    idCliente: Number,
     data: String,
     produto: String
 });

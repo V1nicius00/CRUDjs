@@ -14,6 +14,8 @@ rotas.post("/venda", VendaController.create);
 rotas.delete("/venda/:idDelete", VendaController.delete);
 rotas.post("/venda/:idUpdate", VendaController.update);
 
+rotas.get("/summary", ClienteController.join);
+
 rotas.get("/cliente", ClienteController.read);
 rotas.post("/cliente", ClienteController.create);
 rotas.delete("/cliente/:idDelete", ClienteController.delete);

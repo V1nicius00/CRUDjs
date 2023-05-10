@@ -1,4 +1,5 @@
 const Cliente = require("../models/ClienteModel");
+const Venda = require("../models/VendaModel")
 
 module.exports = {
     async read(req,res){
@@ -62,6 +63,33 @@ module.exports = {
             return res.json(cliente);
         } catch (error) {
             console.log("Erro ao atualizar dados de cliente: ", error)
+        }
+    },
+
+    async join(req, res){
+        try {
+            
+            const lookup = [
+                {
+
+                $lookup: {
+                    from: "vendas",
+                    localField: "id",
+                    foreignField: "idCliente",
+                    as: "venda",
+                },
+
+            }
+        ]
+
+        const summary = await Cliente.aggregate(lookup);
+
+        res.json(summary);
+
+        } catch (error) {
+            
+            console.log("Erro ao mostrar resumo de vendas: " , error);
+
         }
     }
 }

@@ -3,7 +3,7 @@ const Cliente = require("../models/ClienteModel");
 
 module.exports = {
 
-    async read(req,res){
+    async read(req, res){
         const VendaList = await Venda.find();
         return res.json(VendaList);
     },
@@ -16,11 +16,9 @@ module.exports = {
         };
 
         try {
-            
-            const cliente = await Cliente.findOne({ id: idCliente });
 
             const vendaCriada = await Venda.create({
-                idCliente: cliente.id,
+                idCliente,
                 data,
                 produto
             });
