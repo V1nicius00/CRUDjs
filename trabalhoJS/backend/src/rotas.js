@@ -1,7 +1,13 @@
 const express = require("express");
 const rotas = express.Router();
+
 const VendaController = require("./controllers/VendaController");
 const ClienteController = require("./controllers/ClienteController");
+
+rotas.get("/", (req, res) => {
+     res.send("Home"); 
+    } 
+);
 
 rotas.get("/venda", VendaController.read);
 rotas.post("/venda", VendaController.create);

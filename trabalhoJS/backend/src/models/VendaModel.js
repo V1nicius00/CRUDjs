@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const VendaModelSchema = new mongoose.Schema({
-    id: String,
-    data: Date,
-    produto: String,
+    idCliente: {type: Number, ref: 'Cliente'},
+    data: String,
+    produto: String
 });
 
 module.exports = mongoose.model("Venda", VendaModelSchema);

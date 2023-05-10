@@ -1,45 +1,80 @@
 const Venda = require("../models/VendaModel");
+const Cliente = require("../models/ClienteModel");
 
 module.exports = {
+
     async read(req,res){
         const VendaList = await Venda.find();
         return res.json(VendaList);
     },
 
     async create(req, res){
-        const {id, data, produto} = req.body;
+        const {idCliente, data, produto} = req.body;
 
-        if(!id || !data || !produto){
+        if(!idCliente || !data || !produto){
             return res.status(400).json({error: "É necessário preencher todos os dados"});
         };
 
-        const vendaCriada = await Venda.create({
-            id,
-            data,
-            produto
-        });
-        return res.json(vendaCriada);
+        try {
+            
+            const cliente = await Cliente.findOne({ id: idCliente });
+
+            const vendaCriada = await Venda.create({
+                idCliente: cliente.id,
+                data,
+                produto
+            });
+
+            return res.json(vendaCriada);
+
+        } catch (error) {
+            console.log("Erro ao realizar venda: ", error)
+        }
     },
 
     async delete(req, res){
-        const { idDelete } = req.params;
-        const vendaDeletada = await Venda.findOneAndDelete({ _id:id });
-        if(vendaDeletada){
-            return res.json(vendaDeletada);
+        
+        try {
+
+            const { idDelete } = req.params;
+            const vendaDeletada = await Venda.findOneAndDelete({ _id:idDelete });
+
+            if (!vendaDeletada) {
+                return res.status(404).json({ message: 'Venda não encontrada' });
+              }
+
+            if(vendaDeletada){
+                return res.json(vendaDeletada);
+            }
+
+        } catch (error) {
+            console.log("Erro ao deletar venda: ", error);
         }
+
     },
 
     async update(req,res){
         const { idUpdate } = req.params;
         const {id, data, produto} = req.body;
 
-        const venda = await Venda.findOne({ _id:id });
-        venda.id = id;
-        venda.data = data;
-        venda.produto = data;
+        try {
 
-        await venda.save();
+            const venda = await Venda.findOne({ _id:idUpdate });
 
-        return res.json(venda);
+            if (!venda) {
+                return res.status(404).json({ message: 'Venda não encontrada' });
+              }
+
+            venda.id = id;
+            venda.data = data;
+            venda.produto = produto;
+
+            await venda.save();
+
+            return res.json(venda);
+
+        } catch (error) {
+            console.log("Erro ao atualizar dados de venda: ", error);
+        }
     }
 }
