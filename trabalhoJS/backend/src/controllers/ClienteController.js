@@ -53,7 +53,8 @@ module.exports = {
             const cliente = await Cliente.findOne({ _id:idUpdate });
             if (!cliente) {
                 return res.status(404).json({ message: 'Cliente não encontrado' });
-              }
+            }
+            
             cliente.id = id;
             cliente.cpf = cpf;
             cliente.nome = nome;
@@ -66,7 +67,7 @@ module.exports = {
         }
     },
 
-    async join(req, res){
+    async summary(req, res){
         try {
             
             const lookup = [
