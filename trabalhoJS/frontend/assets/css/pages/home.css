@@ -1,0 +1,22 @@
+h1{
+    font-size: 72px;
+    text-align: center;
+    margin-top: 250px;
+    text-shadow: gray 5px 5px 3px;
+    font-family: 'Montserrat', 'Poppins', Verdana, sans-serif;
+}
+
+img{
+    height: 65px;
+}
+
+.logo a, .logo p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about{
+    text-align: center;
+    margin-top: 20px;
+}

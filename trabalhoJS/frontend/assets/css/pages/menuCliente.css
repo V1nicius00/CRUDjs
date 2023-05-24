@@ -1,0 +1,32 @@
+#container{
+    height: 90vh;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 50px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: gray 5px 5px 3px;
+}
+
+.menu-cliente{
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.menu-cliente a{
+    color:rgb(52, 52, 52);
+}
+
+.menu-cliente a:hover{
+    border-bottom: solid 3px black;
+    font-size: 32px;
+}
