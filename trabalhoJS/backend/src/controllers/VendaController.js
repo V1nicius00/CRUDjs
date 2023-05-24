@@ -9,16 +9,16 @@ module.exports = {
     },
 
     async create(req, res){
-        const {idCliente, data, produto} = req.body;
+        const {idVenda, data, produto} = req.body;
 
-        if(!idCliente || !data || !produto){
+        if(!idVenda || !data || !produto){
             return res.status(400).json({error: "É necessário preencher todos os dados"});
         };
 
         try {
 
             const vendaCriada = await Venda.create({
-                idCliente,
+                idVenda,
                 data,
                 produto
             });
@@ -38,7 +38,7 @@ module.exports = {
             const vendaDeletada = await Venda.findOneAndDelete({ _id:idDelete });
 
             if (!vendaDeletada) {
-                return res.status(404).json({ message: 'Venda não encontrada' });
+                return res.status(400).json({ message: 'Venda não encontrada' });
               }
 
             if(vendaDeletada){
@@ -53,17 +53,17 @@ module.exports = {
 
     async update(req,res){
         const { idUpdate } = req.params;
-        const {id, data, produto} = req.body;
+        const {idVenda, data, produto} = req.body;
 
         try {
 
             const venda = await Venda.findOne({ _id:idUpdate });
 
             if (!venda) {
-                return res.status(404).json({ message: 'Venda não encontrada' });
+                return res.status(400).json({ message: 'Venda não encontrada' });
               }
 
-            venda.id = id;
+            venda.idVenda = idVenda;
             venda.data = data;
             venda.produto = produto;
 

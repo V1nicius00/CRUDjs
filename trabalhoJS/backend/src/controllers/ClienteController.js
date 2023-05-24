@@ -8,15 +8,15 @@ module.exports = {
     },
 
     async create(req, res){
-        const {id, cpf, nome} = req.body;
+        const {idCliente, cpf, nome} = req.body;
 
-        if(!id || !cpf || !nome){
+        if(!idCliente || !cpf || !nome){
             return res.status(400).json({error: "É necessário preencher todos os dados"});
         };
 
         try {
             const clienteCriado = await Cliente.create({
-                id,
+                idCliente,
                 cpf,
                 nome,
             });
@@ -47,7 +47,7 @@ module.exports = {
 
     async update(req,res){
         const { idUpdate } = req.params;
-        const {id, cpf, nome} = req.body;
+        const {idCliente, cpf, nome} = req.body;
 
         try {
             const cliente = await Cliente.findOne({ _id:idUpdate });
@@ -55,7 +55,7 @@ module.exports = {
                 return res.status(404).json({ message: 'Cliente não encontrado' });
             }
 
-            cliente.id = id;
+            cliente.idCliente = idCliente;
             cliente.cpf = cpf;
             cliente.nome = nome;
 
@@ -75,8 +75,8 @@ module.exports = {
 
                 $lookup: {
                     from: "vendas",
-                    localField: "id",
-                    foreignField: "idCliente",
+                    localField: "idCliente",
+                    foreignField: "idVenda",
                     as: "VendasCliente",
                 },
 
