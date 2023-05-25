@@ -16,7 +16,7 @@
             <ul class="menu">
                 <li><a href="../cliente/menuCliente.html">Cliente</a></li>
                 <li><a href="./venda.html">Venda</a></li>
-                <li><a href="#">Resumo</a></li>
+                <li><a href="../resumo.html">Resumo</a></li>
                 <li><a href="../sobre.html">Sobre</a></li>
             </ul>
         </nav>
@@ -25,7 +25,7 @@
     <main id="container">
         <h1>Venda</h1>
 
-        <form action="">
+        <form action="" id="form_venda">
             <label for="id">ID</label>
             <input type="text" name="id" id="id_venda" placeholder="ID do cliente">
 
@@ -35,9 +35,11 @@
             <label for="data">Data</label>
             <input type="date" name="data" id="data_venda" placeholder="Data da venda">
 
-            <input type="button" value="Relizar Venda" id="button">
+            <input type="button" value="Relizar Venda" id="button" onclick="realizarVenda()">
         </form>
     </main>
+
+    <script src="../../assets/js/realizarVenda.js"></script>
 
 </body>
 </html>

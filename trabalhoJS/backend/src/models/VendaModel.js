@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const VendaModelSchema = new mongoose.Schema({
     idVenda: Number,
-    data: String,
+    data: Date,
     produto: String
 });
 

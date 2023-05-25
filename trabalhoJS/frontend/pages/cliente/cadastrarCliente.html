@@ -16,7 +16,7 @@
             <ul class="menu">
                 <li><a href="./menuCliente.html">Cliente</a></li>
                 <li><a href="../venda/venda.html">Venda</a></li>
-                <li><a href="#">Resumo</a></li>
+                <li><a href="../resumo.html">Resumo</a></li>
                 <li><a href="../sobre.html">Sobre</a></li>
             </ul>
         </nav>
@@ -25,7 +25,7 @@
     <main id="container">
         <h1>Cadastrar Cliente</h1>
 
-        <form action="">
+        <form action="" id="form_cadastro">
             <label for="id">ID</label>
             <input type="text" name="id" id="id_cadastro" placeholder="ID do cliente">
 
@@ -35,9 +35,10 @@
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome_cadastro" placeholder="Nome do cliente">
 
-            <input type="button" value="Cadastrar" id="button">
+            <input type="button" value="Cadastrar" id="button" onclick="cadastrarCliente()">
         </form>
     </main>
 
+    <script src="../../assets/js/cadastrarCliente.js"></script>
 </body>
 </html>

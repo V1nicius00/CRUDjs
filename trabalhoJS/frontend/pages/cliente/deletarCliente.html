@@ -16,7 +16,7 @@
             <ul class="menu">
                 <li><a href="./menuCliente.html">Cliente</a></li>
                 <li><a href="../venda/venda.html">Venda</a></li>
-                <li><a href="#">Resumo</a></li>
+                <li><a href="../resumo.html">Resumo</a></li>
                 <li><a href="../sobre.html">Sobre</a></li>
             </ul>
         </nav>
@@ -25,13 +25,13 @@
     <main id="container">
         <h1>Deletar Cliente</h1>
 
-        <form action="">
+        <form action="" id="form_delete">
             <label for="id">ID</label>
             <input type="text" name="id" id="id_delete" placeholder="ID do cliente">
-
-            <input type="button" value="Deletar Cliente" id="button">
+            <input type="button" value="Deletar Cliente" id="button" onclick="deletarCliente()">
         </form>
     </main>
 
+    <script src="../../assets/js/deletarCliente.js"></script>
 </body>
 </html>

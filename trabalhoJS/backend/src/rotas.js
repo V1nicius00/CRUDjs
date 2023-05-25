@@ -20,5 +20,6 @@ rotas.get("/cliente", ClienteController.read);
 rotas.post("/cliente", ClienteController.create);
 rotas.delete("/cliente/:idDelete", ClienteController.delete);
 rotas.post("/cliente/:idUpdate", ClienteController.update);
+rotas.get("/cliente/:idBuscar", ClienteController.findOne);
 
 module.exports = rotas;

@@ -31,11 +31,11 @@ module.exports = {
     async delete(req, res){
         try {
             const { idDelete } = req.params;
-            const clienteDeletado = await Cliente.findOneAndDelete({ _id:idDelete });
+            const clienteDeletado = await Cliente.findOneAndDelete({ idCliente:idDelete });
 
             if (!clienteDeletado) {
                 return res.status(404).json({ message: 'Cliente não encontrado' });
-              }
+            }
         
             if(clienteDeletado){
                 return res.json(clienteDeletado);
@@ -50,7 +50,7 @@ module.exports = {
         const {idCliente, cpf, nome} = req.body;
 
         try {
-            const cliente = await Cliente.findOne({ _id:idUpdate });
+            const cliente = await Cliente.findOne({ idCliente:idUpdate });
             if (!cliente) {
                 return res.status(404).json({ message: 'Cliente não encontrado' });
             }
@@ -92,5 +92,11 @@ module.exports = {
             console.log("Erro ao mostrar resumo de vendas: " , error);
 
         }
+    },
+
+    async findOne(req,res){
+        const {idBuscar} = req.params;
+        const cliente = await Cliente.findOne({idCliente: idBuscar});
+        return res.json(cliente); 
     }
 }

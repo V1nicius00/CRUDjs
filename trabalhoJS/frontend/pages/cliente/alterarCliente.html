@@ -16,7 +16,7 @@
             <ul class="menu">
                 <li><a href="./menuCliente.html">Cliente</a></li>
                 <li><a href="../venda/venda.html">Venda</a></li>
-                <li><a href="#">Resumo</a></li>
+                <li><a href="../resumo.html">Resumo</a></li>
                 <li><a href="../sobre.html">Sobre</a></li>
             </ul>
         </nav>
@@ -25,7 +25,7 @@
     <main id="container">
         <h1>Alterar Cliente</h1>
 
-        <form action="">
+        <form action="" id="form_alterar">
             <label for="id">ID</label>
             <input type="text" name="id" id="id_alterar" placeholder="ID do cliente">
 
@@ -33,14 +33,16 @@
             <p style="text-align: center; font-weight: 600;">Alterar Dados</p>
 
             <label for="cpf">CPF</label>
-            <input type="text" name="cpf" id="cpf_alterar" placeholder="CPF do cliente">
+            <input type="text" name="cpf" id="cpf_alterar" placeholder="Novo CPF do cliente">
             
             <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome_alterar" placeholder="Nome do cliente">
+            <input type="text" name="nome" id="nome_alterar" placeholder="Novo nome do cliente">
 
-            <input type="button" value="Alterar" id="button">
+            <input type="button" value="Alterar" id="button" onclick="alterarCliente()">
         </form>
     </main>
+
+    <script src="../../assets/js/alterarCliente.js"></script>
 
 </body>
 </html>
